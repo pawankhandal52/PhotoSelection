@@ -21,6 +21,7 @@ class ViewController: UICollectionViewController, UIGestureRecognizerDelegate  {
     var selectMode = true
     var lastSelectedCell = IndexPath()
     
+    //This function get called when user select cells using drag and drop
     func selectCell(_ indexPath: IndexPath, selected: Bool) {
         if let cell = collectionView.cellForItem(at: indexPath) {
             if cell.isSelected {
@@ -35,11 +36,11 @@ class ViewController: UICollectionViewController, UIGestureRecognizerDelegate  {
             }
             if let numberOfSelections = collectionView.indexPathsForSelectedItems?.count {
                 title = "\(numberOfSelections) items selected"
-                print(title ?? "pawan")
             }
         }
     }
     
+    //handler for pan gesture
     @objc func didPan(toSelectCells panGesture: UIPanGestureRecognizer) {
         print("pan is started \(selectMode)")
         if !selectMode {
@@ -66,6 +67,7 @@ class ViewController: UICollectionViewController, UIGestureRecognizerDelegate  {
             }
         }
     }
+    //function to show all image form the galllary
     func grabPhotos(){
         let imgManager = PHImageManager.default()
         
@@ -91,6 +93,7 @@ class ViewController: UICollectionViewController, UIGestureRecognizerDelegate  {
             }
         }
     }
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
